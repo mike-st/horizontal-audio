@@ -51,6 +51,10 @@ define([
                 $('.block.nth-child-' + count + ' .audioplayicon').addClass('activeaudio');
                 $( '.activeaudio' ).trigger( 'click' );
             });
+            /* $('[data-page-level-progress-id="'+id+'"]') .click(function(){
+            	alert('menu clicked');
+            });*/
+            
 
 			for (var i = 0, l = this._blockModels.length; i < l; i++) {
 				var blockModel = this._blockModels[i];				
@@ -71,7 +75,11 @@ define([
 
 	            this.$blockElements[id].on("onscreen", this.callbacks[id]);
 
-	            var $backGround = $('<script> var x'+id+' = document.getElementById("myAudio'+id+'"); $("#myAudio'+id+'").on("ended", function() { $(".' + id +'.audiopauseicon").removeAttr("onclick"); $(".' + id +'.audiopauseicon").attr("onclick","playAudio'+id+'()").removeClass("audiopauseicon").addClass("audioplayicon"); }); function playAudio'+id+'() { x'+id+'.play(); $(".' + id +'.audioplayicon").removeAttr("onclick"); $(".' + id +'.audioplayicon").attr("onclick","pauseAudio'+id+'()").removeClass("audioplayicon").addClass("audiopauseicon"); } function pauseAudio'+id+'() { x'+id+'.pause(); $(".' + id +'.audiopauseicon").removeAttr("onclick"); $(".' + id +'.audiopauseicon").attr("onclick","playAudio'+id+'()").removeClass("audiopauseicon").addClass("audioplayicon"); } </script><audio id="myAudio'+id+'"><source src="' + options.src + '" type="audio/mpeg" style=""> </audio><button onclick="playAudio'+id+'()" type="button" class="audioplayicon ' + id +'"></button>');
+	            if (options.src == ""){	
+	            	var $backGround = $('<script> var x'+id+' = document.getElementById("myAudio'+id+'"); $("#myAudio'+id+'").on("ended", function() { $(".' + id +'.audiopauseicon").removeAttr("onclick"); $(".' + id +'.audiopauseicon").attr("onclick","playAudio'+id+'()").removeClass("audiopauseicon").addClass("audioplayicon"); }); function playAudio'+id+'() { x'+id+'.play(); $(".' + id +'.audioplayicon").removeAttr("onclick"); $(".' + id +'.audioplayicon").attr("onclick","pauseAudio'+id+'()").removeClass("audioplayicon").addClass("audiopauseicon"); } function pauseAudio'+id+'() { x'+id+'.pause(); $(".' + id +'.audiopauseicon").removeAttr("onclick"); $(".' + id +'.audiopauseicon").attr("onclick","playAudio'+id+'()").removeClass("audiopauseicon").addClass("audioplayicon"); } </script><audio id="myAudio'+id+'"><source src="adapt/css/fonts/blank.mp3" type="audio/mpeg" style=""> </audio><button onclick="playAudio'+id+'()" type="button" class="disabled audioplayicon ' + id +'" disabled="disabled"></button>');
+				}else{
+					var $backGround = $('<script> var x'+id+' = document.getElementById("myAudio'+id+'"); $("#myAudio'+id+'").on("ended", function() { $(".' + id +'.audiopauseicon").removeAttr("onclick"); $(".' + id +'.audiopauseicon").attr("onclick","playAudio'+id+'()").removeClass("audiopauseicon").addClass("audioplayicon"); }); function playAudio'+id+'() { x'+id+'.play(); $(".' + id +'.audioplayicon").removeAttr("onclick"); $(".' + id +'.audioplayicon").attr("onclick","pauseAudio'+id+'()").removeClass("audioplayicon").addClass("audiopauseicon"); } function pauseAudio'+id+'() { x'+id+'.pause(); $(".' + id +'.audiopauseicon").removeAttr("onclick"); $(".' + id +'.audiopauseicon").attr("onclick","playAudio'+id+'()").removeClass("audiopauseicon").addClass("audioplayicon"); } </script><audio id="myAudio'+id+'"><source src="' + options.src + '" type="audio/mpeg" style=""> </audio><button onclick="playAudio'+id+'()" type="button" class="audioplayicon ' + id +'"></button>');
+				}
 				//this.$backgroundContainer.prepend($backGround);
 				$blockElement.find('.block-inner').prepend($backGround);
 				this.$backgrounds[id] = $backGround;
