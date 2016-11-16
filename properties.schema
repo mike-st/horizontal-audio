@@ -1,0 +1,76 @@
+{
+  "type":"object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://jsonschema.net",
+  "required":false,
+  "properties":{
+    "pluginLocations": {
+      "type":"object",
+      "required":true,
+      "properties":{
+        "config": {
+          "type":"object"
+        },
+        "course": {
+          "type":"object"
+        },
+        "contentobject": {
+          "type":"object",
+          "properties":{
+            "_horizontal-audio": {
+              "type":"object",
+              "required":true,
+              "legend": "horizontal-audio",
+              "properties":{
+                "_isActive": {
+                  "type":"boolean",
+                  "required":true,
+                  "title": "Enabled",
+                  "inputType": { "type": "Boolean", "options": [false, true]},
+                  "validators": [],
+                  "help": "Enables Audio in BlockSlider or not"
+                }
+              }
+            }
+          }
+        },
+        "article": {
+          "type":"object"
+        },
+        "block": {
+          "type":"object",
+          "properties":{
+            "_horizontal-audio": {
+              "type":"object",
+              "required":false,
+              "legend": "horizontal-audio",
+              "properties":{
+                "mobileSrc": {
+                  "type":"string",
+                  "required":false,
+                  "title": "Mobile MP3 Audio Select",
+                  "default": "",
+                  "inputType": "Asset:audio",
+                  "validators": [],
+                  "help": "This is the audio source used when page is viewed at mobile resolution"
+                },
+                "src": {
+                  "type":"string",
+                  "required":false,
+                  "title": "Desktop MP3 Audio Select",
+                  "default": "",
+                  "inputType": "Asset:audio",
+                  "validators": [],
+                  "help": "This is the audio source used when page is viewed at desktop resolution"
+                }
+              }
+            }
+          }
+        },
+        "component": {
+          "type":"object"
+        }
+      }
+    }
+  }
+}

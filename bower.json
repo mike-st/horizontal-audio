@@ -1,0 +1,23 @@
+{
+    "name": "horizontal-audio",
+    "version": "2.0.0",
+    "framework": "^2.0.0",
+    "homepage": "https://github.com/mike-st/horizontal-audio",
+    "authors": [
+      "Michael Stevens <mesgraphix@gmail.com>"
+    ],
+    "displayName": "Audio for BlockSlider",
+    "extension": "horizontal-audio",
+    "description": "Attach Audio to the BlockSlider Horizontal Layout",
+    "main": "/js/horizontal-audio.js",
+    "assetFields": [
+        "_horizontal-audio.src",
+        "_horizontal-audio.mobileSrc"
+    ],
+    "keywords": [
+        "adapt-plugin",
+        "adapt-extension"
+    ],
+    "license": "GPL-3.0",
+    "targetAttribute": "_horizontal-audio"
+}

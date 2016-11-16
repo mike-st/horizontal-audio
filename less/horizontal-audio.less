@@ -1,0 +1,45 @@
+// Ico moon font used for default audio icon
+@font-face {
+    font-family: 'icomoon';
+    src: url('fonts/icomoon.eot?');
+    src: url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+         url('fonts/icomoon.woff?') format('woff'),
+         url('fonts/icomoon.ttf?') format('truetype'),
+         url('fonts/icomoon.svg?1#fontawesome') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.audioplayicon, .audiopauseicon {
+    font-family: 'icomoon';
+    color: @primary-color;
+    background-color: transparent;
+    border: none;
+    font-weight: 400;
+    padding: 0px;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.audioplayicon:hover, .audiopauseicon:hover {
+    cursor: pointer;
+    color: lighten(@primary-color, 30%) !important;
+    background-color: transparent !important;
+}
+
+.audioplayicon:focus, .audiopauseicon:focus {outline:0;}
+
+.audioplayicon:before {
+    content: "\e900";
+    background-color: @white;
+}
+.audiopauseicon:before {
+    content: "\e901";
+    background-color: @white;
+}
