@@ -37,17 +37,19 @@ define([
 			this.callbacks = {};
 
 			var count = 1;
-			$('.block.nth-child-1 audio').addClass('activeaudio');
-
+			var pluscount = count+1;
+			var minuscount = count-1;
             $('[data-block-slider="right"]') .click(function(){
             	count++;
-            	$('.block audio').removeClass('activeaudio');
-                $('.block.nth-child-' + count + ' audio').addClass('activeaudio');
+            	$('.block .audioplayicon').removeClass('activeaudio');
+                $('.block.nth-child-' + count + ' .audioplayicon').addClass('activeaudio');
+                $( '.activeaudio' ).trigger( 'click' );
             });
             $('[data-block-slider="left"]') .click(function(){
             	count -=1;
-            	$('.block audio').removeClass('activeaudio');
-                $('.block.nth-child-' + count + ' audio').addClass('activeaudio');
+            	$('.block .audioplayicon').removeClass('activeaudio');
+                $('.block.nth-child-' + count + ' .audioplayicon').addClass('activeaudio');
+                $( '.activeaudio' ).trigger( 'click' );
             });
 
 			for (var i = 0, l = this._blockModels.length; i < l; i++) {
@@ -73,6 +75,9 @@ define([
 				//this.$backgroundContainer.prepend($backGround);
 				$blockElement.find('.block-inner').prepend($backGround);
 				this.$backgrounds[id] = $backGround;
+
+				$(".block.nth-child-1 .audioplayicon").addClass("activeaudio").attr("onclick","pauseAudio"+id+"()").removeClass("audioplayicon").addClass("audiopauseicon");
+				$(".block.nth-child-1 .block-inner audio").attr("autoplay","autoplay");
 
 			}
 
