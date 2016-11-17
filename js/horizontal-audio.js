@@ -34,27 +34,7 @@ define([
 
 			this.$blockElements = {};
 			this.$backgrounds = {};
-			this.callbacks = {};
-
-			var count = 1;
-			var pluscount = count+1;
-			var minuscount = count-1;
-            $('[data-block-slider="right"]') .click(function(){
-            	count++;
-            	$('.block .audioplayicon').removeClass('activeaudio');
-                $('.block.nth-child-' + count + ' .audioplayicon').addClass('activeaudio');
-                $( '.activeaudio' ).trigger( 'click' );
-            });
-            $('[data-block-slider="left"]') .click(function(){
-            	count -=1;
-            	$('.block .audioplayicon').removeClass('activeaudio');
-                $('.block.nth-child-' + count + ' .audioplayicon').addClass('activeaudio');
-                $( '.activeaudio' ).trigger( 'click' );
-            });
-            /* $('[data-page-level-progress-id="'+id+'"]') .click(function(){
-            	alert('menu clicked');
-            });*/
-            
+			this.callbacks = {};         
 
 			for (var i = 0, l = this._blockModels.length; i < l; i++) {
 				var blockModel = this._blockModels[i];				
@@ -99,6 +79,25 @@ define([
                 this.$backgroundContainer = $('<div class="horz-audio-container"></div>');
 				this.$el.addClass('horz-audio-active');
 				this.$el.prepend(this.$backgroundContainer);
+
+				var count = 1;
+				var pluscount = count+1;
+				var minuscount = count-1;
+	            $('[data-block-slider="right"]') .click(function(){
+	            	count++;
+	            	$('.block .audioplayicon').removeClass('activeaudio');
+	                $('.block.nth-child-' + count + ' .audioplayicon').addClass('activeaudio');
+	                $( '.activeaudio' ).trigger( 'click' );
+	            });
+	            $('[data-block-slider="left"]') .click(function(){
+	            	count -=1;
+	            	$('.block .audioplayicon').removeClass('activeaudio');
+	                $('.block.nth-child-' + count + ' .audioplayicon').addClass('activeaudio');
+	                $( '.activeaudio' ).trigger( 'click' );
+	            });
+	            /* $('[data-page-level-progress-id="'+id+'"]') .click(function(){
+	            	alert('menu clicked');
+	            });*/
 
 		},
 		
