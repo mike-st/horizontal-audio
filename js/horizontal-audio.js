@@ -95,9 +95,6 @@ define([
 	                $('.block.nth-child-' + count + ' .audioplayicon').addClass('activeaudio');
 	                $( '.activeaudio' ).trigger( 'click' );
 	            });
-	            /* $('[data-page-level-progress-id="'+id+'"]') .click(function(){
-	            	alert('menu clicked');
-	            });*/
 
 		},
 		
