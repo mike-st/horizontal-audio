@@ -80,19 +80,30 @@ define([
 				this.$el.addClass('horz-audio-active');
 				this.$el.prepend(this.$backgroundContainer);
 
-				var count = 1;
-				var pluscount = count+1;
-				var minuscount = count-1;
 	            $('[data-block-slider="right"]') .click(function(){
-	            	count++;
-	            	$('.block .audioplayicon').removeClass('activeaudio');
-	                $('.block.nth-child-' + count + ' .audioplayicon').addClass('activeaudio');
+	                var partType = $(".pagenum").text();
+	                var numofthepg = partType.replace(/Page /g, '').replace(/ of/g, '').slice(0,-2);
+	                var countpgnum = parseInt(numofthepg, 10);
+	                if(isNaN(countpgnum)) {
+					var countpgnum = 1;
+					};
+	                ++countpgnum;
+
+        			$('.block .audioplayicon').removeClass('activeaudio');
+	                $('.block.nth-child-' + countpgnum + ' .audioplayicon').addClass('activeaudio');
 	                $( '.activeaudio' ).trigger( 'click' );
 	            });
 	            $('[data-block-slider="left"]') .click(function(){
-	            	count -=1;
+	            	var partType = $(".pagenum").text();
+	                var numofthepg = partType.replace(/Page /g, '').replace(/ of/g, '').slice(0,-2);
+	                var countpgnum = parseInt(numofthepg, 10);
+	                if(isNaN(countpgnum)) {
+					var countpgnum = 1;
+					};
+	                countpgnum -=1;
+	                
 	            	$('.block .audioplayicon').removeClass('activeaudio');
-	                $('.block.nth-child-' + count + ' .audioplayicon').addClass('activeaudio');
+	                $('.block.nth-child-' + countpgnum + ' .audioplayicon').addClass('activeaudio');
 	                $( '.activeaudio' ).trigger( 'click' );
 	            });
 
