@@ -91,22 +91,24 @@ define([
 
         			$('.block .audioplayicon').removeClass('activeaudio');
 	                $('.block.nth-child-' + countpgnum + ' .audioplayicon').addClass('activeaudio');
+	                $('.block.nth-child-' + countpgnum + ' .audiopauseicon').addClass('activeaudio');
 	                $( '.activeaudio' ).trigger( 'click' );
 	            });
 	            $('[data-block-slider="left"]') .click(function(){
 	            	var partType = $(".pagenum").text();
 	                var numofthepg = partType.replace(/Page /g, '').replace(/ of/g, '').slice(0,-2);
 	                var countpgnum = parseInt(numofthepg, 10);
+	                var datotblock = parseInt($('.block').length, 10);
 	                if(isNaN(countpgnum)) {
-					var countpgnum = 1;
+					var countpgnum = datotblock-2;
 					};
 	                countpgnum -=1;
-	                
+
 	            	$('.block .audioplayicon').removeClass('activeaudio');
 	                $('.block.nth-child-' + countpgnum + ' .audioplayicon').addClass('activeaudio');
+	                $('.block.nth-child-' + countpgnum + ' .audiopauseicon').addClass('activeaudio');
 	                $( '.activeaudio' ).trigger( 'click' );
 	            });
-
 		},
 		
 
