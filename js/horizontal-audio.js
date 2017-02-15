@@ -56,15 +56,16 @@ define([
 	            this.$blockElements[id].on("onscreen", this.callbacks[id]);
 
 	            if (options.src == ""){	
-	            	var $backGround = $('<script> var x'+id+' = document.getElementById("myAudio'+id+'"); $("#myAudio'+id+'").on("ended", function() { $(".' + id +'.audiopauseicon").removeAttr("onclick"); $(".' + id +'.audiopauseicon").attr("onclick","playAudio'+id+'()").removeClass("audiopauseicon").addClass("audioplayicon"); }); function playAudio'+id+'() { x'+id+'.play(); $(".' + id +'.audioplayicon").removeAttr("onclick"); $(".' + id +'.audioplayicon").attr("onclick","pauseAudio'+id+'()").removeClass("audioplayicon").addClass("audiopauseicon"); } function pauseAudio'+id+'() { x'+id+'.pause(); $(".' + id +'.audiopauseicon").removeAttr("onclick"); $(".' + id +'.audiopauseicon").attr("onclick","playAudio'+id+'()").removeClass("audiopauseicon").addClass("audioplayicon"); } </script><audio id="myAudio'+id+'"><source src="adapt/css/fonts/blank.mp3" type="audio/mpeg" style=""> </audio><button onclick="playAudio'+id+'()" type="button" class="disabled audioplayicon ' + id +'" disabled="disabled"></button>');
+	            	var $backGround = $('<script> var x'+id+' = document.getElementById("myAudio'+id+'"); $("#myAudio'+id+'").on("ended", function() { $(".' + id +'.audiopauseicon").removeAttr("onclick"); $(".' + id +'.audiopauseicon").attr("onclick","playAudio'+id+'()").removeClass("audiopauseicon").addClass("audioplayicon"); }); function playAudio'+id+'() { x'+id+'.play(); $(".' + id +'.audioplayicon").removeAttr("onclick"); $(".' + id +'.audioplayicon").attr("onclick","pauseAudio'+id+'()").removeClass("audioplayicon").addClass("audiopauseicon"); } function pauseAudio'+id+'() { x'+id+'.pause(); x'+id+'.currentTime = 0; $(".' + id +'.audiopauseicon").removeAttr("onclick"); $(".' + id +'.audiopauseicon").attr("onclick","playAudio'+id+'()").removeClass("audiopauseicon").addClass("audioplayicon"); } </script><audio id="myAudio'+id+'"><source src="adapt/css/fonts/blank.mp3" type="audio/mpeg" style=""> </audio><button onclick="playAudio'+id+'()" type="button" class="disabled audioplayicon ' + id +'" disabled="disabled"></button>');
 				}else{
-					var $backGround = $('<script> var x'+id+' = document.getElementById("myAudio'+id+'"); $("#myAudio'+id+'").on("ended", function() { $(".' + id +'.audiopauseicon").removeAttr("onclick"); $(".' + id +'.audiopauseicon").attr("onclick","playAudio'+id+'()").removeClass("audiopauseicon").addClass("audioplayicon"); }); function playAudio'+id+'() { x'+id+'.play(); $(".' + id +'.audioplayicon").removeAttr("onclick"); $(".' + id +'.audioplayicon").attr("onclick","pauseAudio'+id+'()").removeClass("audioplayicon").addClass("audiopauseicon"); } function pauseAudio'+id+'() { x'+id+'.pause(); $(".' + id +'.audiopauseicon").removeAttr("onclick"); $(".' + id +'.audiopauseicon").attr("onclick","playAudio'+id+'()").removeClass("audiopauseicon").addClass("audioplayicon"); } </script><audio id="myAudio'+id+'"><source src="' + options.src + '" type="audio/mpeg" style=""> </audio><button onclick="playAudio'+id+'()" type="button" class="audioplayicon ' + id +'"></button>');
+					var $backGround = $('<script> var x'+id+' = document.getElementById("myAudio'+id+'"); $("#myAudio'+id+'").on("ended", function() { $(".' + id +'.audiopauseicon").removeAttr("onclick"); $(".' + id +'.audiopauseicon").attr("onclick","playAudio'+id+'()").removeClass("audiopauseicon").addClass("audioplayicon"); }); function playAudio'+id+'() { x'+id+'.play(); $(".' + id +'.audioplayicon").removeAttr("onclick"); $(".' + id +'.audioplayicon").attr("onclick","pauseAudio'+id+'()").removeClass("audioplayicon").addClass("audiopauseicon"); $(".' + id +'.audiostopicon").attr("onclick","stopAudio'+id+'()").show(); } function pauseAudio'+id+'() { x'+id+'.pause(); $(".' + id +'.audiopauseicon").removeAttr("onclick"); $(".' + id +'.audiopauseicon").attr("onclick","playAudio'+id+'()").removeClass("audiopauseicon").addClass("audioplayicon"); $(".' + id +'.audiostopicon").attr("onclick","stopAudio'+id+'()").hide(); } function stopAudio'+id+'() { x'+id+'.pause(); x'+id+'.currentTime = 0; $(".' + id +'.audiostopicon").removeAttr("onclick"); $(".' + id +'.audiopauseicon").attr("onclick","playAudio'+id+'()").removeClass("audiopauseicon").addClass("audioplayicon"); $(".' + id +'.audiostopicon").attr("onclick","stopAudio'+id+'()").hide(); } </script> <audio id="myAudio'+id+'"> <source src="' + options.src + '" type="audio/mpeg" style=""> </audio> <button onclick="playAudio'+id+'()" type="button" class="audioplayicon ' + id +'"></button> <button onclick="stopAudio'+id+'()" type="button" class="audiostopicon ' + id +'" style="right:78px; display:none;"></button>');
 				}
 				//this.$backgroundContainer.prepend($backGround);
 				$blockElement.find('.block-inner').prepend($backGround);
 				this.$backgrounds[id] = $backGround;
 
 				$(".block.nth-child-1 .audioplayicon").addClass("activeaudio").attr("onclick","pauseAudio"+id+"()").removeClass("audioplayicon").addClass("audiopauseicon");
+				$(".block.nth-child-1 .audiostopicon").addClass("activestop").attr("onclick","stopAudio'+id+'()").show();
 				$(".block.nth-child-1 .block-inner audio").attr("autoplay","autoplay");
 
 			}
@@ -90,8 +91,11 @@ define([
 	                ++countpgnum;
 
         			$('.block .audioplayicon').removeClass('activeaudio');
+        			$('.block .audiostopicon').removeClass('activestop');
 	                $('.block.nth-child-' + countpgnum + ' .audioplayicon').addClass('activeaudio');
 	                $('.block.nth-child-' + countpgnum + ' .audiopauseicon').addClass('activeaudio');
+	                $('.block.nth-child-' + countpgnum + ' .audiostopicon').addClass('activestop');
+	                $( '.activestop' ).trigger( 'click' );
 	                $( '.activeaudio' ).trigger( 'click' );
 	            });
 	            $('[data-block-slider="left"]') .click(function(){
@@ -105,8 +109,11 @@ define([
 	                countpgnum -=1;
 
 	            	$('.block .audioplayicon').removeClass('activeaudio');
+        			$('.block .audiostopicon').removeClass('activestop');
 	                $('.block.nth-child-' + countpgnum + ' .audioplayicon').addClass('activeaudio');
 	                $('.block.nth-child-' + countpgnum + ' .audiopauseicon').addClass('activeaudio');
+	                $('.block.nth-child-' + countpgnum + ' .audiostopicon').addClass('activestop');
+	                $( '.activestop' ).trigger( 'click' );
 	                $( '.activeaudio' ).trigger( 'click' );
 	            });
 		},
