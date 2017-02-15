@@ -10,7 +10,7 @@
     font-style: normal;
 }
 
-.audioplayicon, .audiopauseicon {
+.audioplayicon, .audiopauseicon, .audiostopicon {
     font-family: 'icomoon';
     color: @secondary-color;
     background-color: transparent;
@@ -31,27 +31,27 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.audioplayicon:hover, .audiopauseicon:hover {
+.audioplayicon:hover, .audiopauseicon:hover, .audiostopicon:hover {
     cursor: pointer;
     color: darken(@secondary-color, 30%) !important;
     background-color: transparent !important;
 }
 
-.audioplayicon[disabled="disabled"], .audiopauseicon[disabled="disabled"] {
+.audioplayicon[disabled="disabled"], .audiopauseicon[disabled="disabled"], .audiostopicon[disabled="disabled"] {
     background-color: transparent !important;
     border-color: transparent !important;
     color: #ccc !important;
     cursor: default;
 }
 
-.audioplayicon[disabled="disabled"]:hover, .audiopauseicon[disabled="disabled"]:hover {
+.audioplayicon[disabled="disabled"]:hover, .audiopauseicon[disabled="disabled"]:hover, .audiostopicon[disabled="disabled"]:hover {
     background-color: transparent !important;
     border-color: transparent !important;
     color: #ccc !important;
     cursor: default;
 }
 
-.audioplayicon:focus, .audiopauseicon:focus {outline:0;}
+.audioplayicon:focus, .audiopauseicon:focus, .audiostopicon:focus {outline:0;}
 
 .audioplayicon:before {
     content: "\e900";
@@ -59,6 +59,10 @@
 }
 .audiopauseicon:before {
     content: "\e901";
+    background-color: @white;
+}
+.audiostopicon:before {
+    content: "\e902";
     background-color: @white;
 }
 
